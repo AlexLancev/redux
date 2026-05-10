@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from 'react-redux';
+import Button from './components/Button';
+import Todos from './components/Todos';
+import ThemeSelect from './components/ThemeSelect';
 
 function App() {
+  const { data, error } = useSelector((state) => state.todos);
+  const theme = useSelector((state) => state.theme);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className={`app-root app-root--${theme}`}>
+      <header className="app-header">
+        <h1 className="app-title">Todos + Redux Saga</h1>
+        <ThemeSelect />
       </header>
+      <main className="app-main">
+        <Button />
+        <Todos data={data} error={error} />
+      </main>
     </div>
   );
 }
