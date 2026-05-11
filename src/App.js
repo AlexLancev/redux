@@ -2,6 +2,8 @@ import { useSelector } from 'react-redux';
 import Button from './components/Button';
 import Todos from './components/Todos';
 import ThemeSelect from './components/ThemeSelect';
+import Modal from './components/Modal';
+import ModalButton from './components/ModalButton';
 
 function App() {
   const { data, error } = useSelector((state) => state.todos);
@@ -16,6 +18,8 @@ function App() {
       <main className="app-main">
         <Button />
         <Todos data={data} error={error} />
+        <ModalButton labelOpen="Модальное окно" labelClose="Скрыть" />
+        <Modal />
       </main>
     </div>
   );

@@ -6,6 +6,7 @@ function readStoredTheme() {
     const raw = localStorage.getItem(THEME_STORAGE_KEY);
     if (raw === Theme.Light || raw === Theme.Dark) return raw;
   } catch {}
+  
   return Theme.Light;
 }
 
