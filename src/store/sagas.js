@@ -1,5 +1,5 @@
-import { all, call, fork, put, select, takeEvery } from 'redux-saga/effects';
-import { TODOS_FETCH_REQUESTED, THEME_SET, MODAL_OPEN, MODAL_CLOSE, MODAL_TOGGLE } from './types';
+import { all, call, fork, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
+import { TODOS_FETCH_REQUESTED, THEME_SET, MODAL_CLOSE, MODAL_TOGGLE } from './types';
 import { fetchTodosSucceeded, fetchTodosFailed } from './actions';
 import { fetchTodos } from '../services/todosApi';
 import { THEME_STORAGE_KEY } from './theme';
@@ -29,12 +29,12 @@ function* themePersistenceWatcher() {
 }
 
 function* persistModalAfterChange() {
-  const { open } = yield select((s) => s.modal);
+  const { open } = yield select((state) => state.modal);
   writeStoredModalOpen(open);
 }
 
 function* modalPersistenceWatcher() {
-  yield takeEvery([MODAL_OPEN, MODAL_CLOSE, MODAL_TOGGLE], persistModalAfterChange);
+  yield takeLatest([MODAL_CLOSE, MODAL_TOGGLE], persistModalAfterChange);
 }
 
 export default function* rootSaga() {

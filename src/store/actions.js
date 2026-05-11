@@ -3,7 +3,6 @@ import {
   TODOS_FETCH_SUCCEEDED,
   TODOS_FETCH_FAILED,
   THEME_SET,
-  MODAL_OPEN,
   MODAL_CLOSE,
   MODAL_TOGGLE,
 } from './types';
@@ -25,10 +24,6 @@ export const fetchTodosFailed = (message) => ({
 export const setTheme = (theme) => ({
   type: THEME_SET,
   payload: theme,
-});
-
-export const openModal = () => ({
-  type: MODAL_OPEN,
 });
 
 export const closeModal = () => ({
