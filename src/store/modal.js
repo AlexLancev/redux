@@ -13,6 +13,6 @@ export function readStoredModalOpen() {
 
 export function writeStoredModalOpen(open) {
   try {
-    localStorage.setItem(MODAL_STORAGE_KEY, open ? 'true' : 'false');
+    localStorage.setItem(MODAL_STORAGE_KEY, open);
   } catch {}
 }

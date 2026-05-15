@@ -1,28 +1,29 @@
 import {
-  TODOS_FETCH_REQUESTED,
-  TODOS_FETCH_SUCCEEDED,
-  TODOS_FETCH_FAILED,
+  PRODUCTS_FETCH_REQUESTED,
+  PRODUCTS_FETCH_SUCCEEDED,
+  PRODUCTS_FETCH_FAILED,
 } from '../types';
 
 const initialState = {
-  data: [],
+  data: null,
   loading: false,
   error: null,
 };
 
-export function todosReducer(state = initialState, action) {
+export function productsReducer(state = initialState, action) {
+  
   switch (action.type) {
-    case TODOS_FETCH_REQUESTED:
+    case PRODUCTS_FETCH_REQUESTED:
       return { ...state, loading: true, error: null };
 
-    case TODOS_FETCH_SUCCEEDED:
+    case PRODUCTS_FETCH_SUCCEEDED:
       return {
         ...state,
         loading: false,
         data: action.payload,
       };
 
-    case TODOS_FETCH_FAILED:
+    case PRODUCTS_FETCH_FAILED:
       return {
         ...state,
         loading: false,

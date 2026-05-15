@@ -1,14 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTodosRequested } from '../store/actions';
+import { fetchProductsRequested } from '../store/actions';
+import { selectProducts } from '../store/selectors';
 
 export default function Button() {
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.todos);
+  const { loading } = useSelector(selectProducts);
 
   return (
     <button
       type="button"
-      onClick={() => dispatch(fetchTodosRequested())}
+      onClick={() => dispatch(fetchProductsRequested())}
       disabled={loading}
     >
       {loading ? 'Загрузка...' : 'Загрузить данные'}

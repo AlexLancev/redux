@@ -5,7 +5,6 @@ import ModalFrame from './ModalFrame';
 export default function Modal({ children }) {
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.modal.open);
-  console.log(isOpen)
 
   return (
     <ModalFrame

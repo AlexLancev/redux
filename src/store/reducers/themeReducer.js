@@ -1,6 +1,8 @@
 import { THEME_SET } from '../types';
 import { Theme, THEME_STORAGE_KEY } from '../theme';
 
+export const selectTheme = (state) => state.theme;
+
 function readStoredTheme() {
   try {
     const raw = localStorage.getItem(THEME_STORAGE_KEY);

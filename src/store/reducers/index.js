@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import { todosReducer } from './todosReducer';
+import { productsReducer } from './productsReducer';
 import { themeReducer } from './themeReducer';
 import { modalReducer } from './modalReducer';
+import { searchReducer } from './searchReducer';
 
 export const rootReducer = combineReducers({
-  todos: todosReducer,
+  products: productsReducer,
   theme: themeReducer,
   modal: modalReducer,
+  search: searchReducer,
 });

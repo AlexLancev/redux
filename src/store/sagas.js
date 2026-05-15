@@ -1,21 +1,21 @@
 import { all, call, fork, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
-import { TODOS_FETCH_REQUESTED, THEME_SET, MODAL_CLOSE, MODAL_TOGGLE } from './types';
-import { fetchTodosSucceeded, fetchTodosFailed } from './actions';
-import { fetchTodos } from '../services/todosApi';
+import { THEME_SET, MODAL_CLOSE, MODAL_TOGGLE, PRODUCTS_FETCH_REQUESTED } from './types';
+import { fetchProductsSucceeded, fetchProductsFailed } from './actions';
+import { fetchProducts } from '../services/productsApi';
 import { THEME_STORAGE_KEY } from './theme';
 import { writeStoredModalOpen } from './modal';
 
-function* todosWorker() {
+function* productsWorker() {
   try {
-    const todos = yield call(fetchTodos);
-    yield put(fetchTodosSucceeded(todos));
+    const products = yield call(fetchProducts);
+    yield put(fetchProductsSucceeded(products));
   } catch (err) {
-    yield put(fetchTodosFailed(err.message));
+    yield put(fetchProductsFailed(err.message));
   }
 }
 
-function* todosWatcher() {
-  yield takeEvery(TODOS_FETCH_REQUESTED, todosWorker);
+function* productsWatcher() {
+  yield takeEvery(PRODUCTS_FETCH_REQUESTED, productsWorker);
 }
 
 function persistThemeWorker(action) {
@@ -39,7 +39,7 @@ function* modalPersistenceWatcher() {
 
 export default function* rootSaga() {
   yield all([
-    fork(todosWatcher),
+    fork(productsWatcher),
     fork(themePersistenceWatcher),
     fork(modalPersistenceWatcher),
   ]);

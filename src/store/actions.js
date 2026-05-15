@@ -1,23 +1,24 @@
 import {
-  TODOS_FETCH_REQUESTED,
-  TODOS_FETCH_SUCCEEDED,
-  TODOS_FETCH_FAILED,
   THEME_SET,
   MODAL_CLOSE,
   MODAL_TOGGLE,
+  SEARCH_QUERY_SET,
+  PRODUCTS_FETCH_SUCCEEDED,
+  PRODUCTS_FETCH_FAILED,
+  PRODUCTS_FETCH_REQUESTED,
 } from './types';
 
-export const fetchTodosRequested = () => ({
-  type: TODOS_FETCH_REQUESTED,
+export const fetchProductsRequested = () => ({
+  type: PRODUCTS_FETCH_REQUESTED,
 });
 
-export const fetchTodosSucceeded = (todos) => ({
-  type: TODOS_FETCH_SUCCEEDED,
-  payload: todos,
+  export const fetchProductsSucceeded = (products) => ({
+  type: PRODUCTS_FETCH_SUCCEEDED,  
+  payload: products,
 });
 
-export const fetchTodosFailed = (message) => ({
-  type: TODOS_FETCH_FAILED,
+export const fetchProductsFailed = (message) => ({
+  type: PRODUCTS_FETCH_FAILED,
   payload: message,
 });
 
@@ -32,4 +33,9 @@ export const closeModal = () => ({
 
 export const toggleModal = () => ({
   type: MODAL_TOGGLE,
+});
+
+export const setSearchQuery = (query) => ({
+  type: SEARCH_QUERY_SET,
+  payload: typeof query === 'string' ? query : '',
 });
