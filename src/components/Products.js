@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Card from './Card';
 
 Products.propTypes = {
   data: PropTypes.arrayOf(
@@ -27,9 +28,11 @@ export default function Products({ data, error, loading, emptyHint }) {
         <p className="todos-empty">{emptyHint}</p>
       )}
 
-      <ul className="todos-list">
-        {data.map((todo) => (
-          <li key={todo.id}>{todo.title}</li>
+      <ul className="products-list">
+        {data.map((product) => (
+          <li key={product.id}>
+            <Card product={product} />
+          </li>
         ))}
       </ul>
 
