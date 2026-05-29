@@ -6,7 +6,7 @@ export const selectProducts = (state) => state.products;
 export const selectProductsData = (state) => state.products.data;
 export const selectSearchQuery = (state) => state.search.query;
 
-const selectProductsList = createSelector(
+export const selectProductsList = createSelector(
   [selectProductsData],
   (data) => (Array.isArray(data?.products) ? data.products : EMPTY_PRODUCTS)
 );
