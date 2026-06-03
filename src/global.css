@@ -236,3 +236,26 @@ body {
   background: rgba(255, 255, 255, 0.08);
 }
 
+.card-price-count {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.card-price-count-btn {
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.card-price-count-value {
+  font-size: 1rem;
+  font-weight: 600;
+}

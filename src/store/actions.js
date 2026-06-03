@@ -6,6 +6,9 @@ import {
   PRODUCTS_FETCH_SUCCEEDED,
   PRODUCTS_FETCH_FAILED,
   PRODUCTS_FETCH_REQUESTED,
+  ADD_TO_CART,
+  PRODUCTS_TO_CART_FAILED,
+  ADD_TO_CART_SUCCEEDED,
 } from './types';
 
 export const fetchProductsRequested = () => ({
@@ -38,4 +41,19 @@ export const toggleModal = () => ({
 export const setSearchQuery = (query) => ({
   type: SEARCH_QUERY_SET,
   payload: typeof query === 'string' ? query : '',
+});
+
+export const addToCart = (id) => ({
+  type: ADD_TO_CART,
+  payload: id,
+});
+
+export const fetchProductsToCartFailed = (message) => ({
+  type: PRODUCTS_TO_CART_FAILED,
+  payload: message,
+});
+
+export const addToCartSucceeded = (product) => ({
+  type: ADD_TO_CART_SUCCEEDED,
+  payload: product,
 });

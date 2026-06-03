@@ -7,7 +7,7 @@ import Home from './components/Home';
 import { selectTheme } from './store/reducers/themeReducer';
 import ProductsPage from './pages/ProductsPage';
 import ProductPage from './pages/ProductPage';
-import BasketPage from './pages/BasketPage';
+import CartPage from './pages/CartPage';
 
 function App() {
   const theme = useSelector(selectTheme);
@@ -18,7 +18,7 @@ function App() {
       <main className="app-main">
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/cart" component={BasketPage} />
+          <Route exact path="/cart" component={CartPage} />
           <Route exact path="/products" component={ProductsPage} />
           <Route path="/products/:id" component={ProductPage} />
         </Switch>
