@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom';
 import AddToCartButton from './AddToCartButton';
 import QuantityCounter from './QuantityCounter';
+import { useSelector } from 'react-redux';
 
 const UNIT_VALUE = '$';
 
 export default function Card({ product: { id, title, images, price } }) {
+  const products = useSelector((state) => state.cart.products);
+  console.log(products, 'products')
   const productUrl = `/products/${id}`;
+  const product = products.find((product) => product.id === id);
 
   return (
     <div className="card-container">
@@ -15,11 +19,11 @@ export default function Card({ product: { id, title, images, price } }) {
       </Link>
       <div className="card-price">
         <span className="card-price-price">{UNIT_VALUE}{price}</span>
-
-        <AddToCartButton id={id} />
-
-        <QuantityCounter />
-
+        {product ? (
+          <QuantityCounter data={product} />
+        ) : (
+          <AddToCartButton id={id} />
+        )}
       </div>
     </div>
   );
