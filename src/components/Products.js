@@ -29,11 +29,15 @@ export default function Products({ data, error, loading, emptyHint }) {
       )}
 
       <ul className="products-list">
-        {data.map((product) => (
-          <li key={product.id}>
-            <Card product={product} />
-          </li>
-        ))}
+        {data.map((product) => {
+          if (!product) return null;
+          
+          return (
+            <li key={product.id}>
+              <Card product={product} />
+            </li>
+          )
+        })}
       </ul>
 
     </>
