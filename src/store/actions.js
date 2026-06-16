@@ -9,14 +9,16 @@ import {
   ADD_TO_CART,
   PRODUCTS_TO_CART_FAILED,
   ADD_TO_CART_SUCCEEDED,
+  UPDATE_CART_PRODUCT_QUANTITY,
+  UPDATE_PRODUCT_QUANTITY,
 } from './types';
 
 export const fetchProductsRequested = () => ({
   type: PRODUCTS_FETCH_REQUESTED,
 });
 
-  export const fetchProductsSucceeded = (products) => ({
-  type: PRODUCTS_FETCH_SUCCEEDED,  
+export const fetchProductsSucceeded = (products) => ({
+  type: PRODUCTS_FETCH_SUCCEEDED,
   payload: products,
 });
 
@@ -57,3 +59,13 @@ export const addToCartSucceeded = (product) => ({
   type: ADD_TO_CART_SUCCEEDED,
   payload: product,
 });
+
+export const quantityCounter = (product) => ({
+  type: UPDATE_CART_PRODUCT_QUANTITY,
+  payload: product,
+})
+
+export const quantityUpdate = (product) => ({
+  type: UPDATE_PRODUCT_QUANTITY,
+  payload: product,
+})
